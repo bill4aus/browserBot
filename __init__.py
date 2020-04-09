@@ -1,5 +1,5 @@
-import botChrome.google
+import browserBot.google
 
-name='chromeBot'
+name='browserBot'
 
 chrome = google.chrome
