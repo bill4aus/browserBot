@@ -1,0 +1,2 @@
+# browserBot
+chrome,phantom,firefox
