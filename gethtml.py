@@ -61,4 +61,6 @@ class requests():
 	def find(self,cssrule):
 		pass
 		# page.html.find('.m-main .m-wrap .card-wrap .card')
+	def setHeader(self,header):
+		self.headers = header
 
