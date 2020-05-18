@@ -13,10 +13,11 @@ import random
 
 from selenium.webdriver.common.keys import Keys
 
-class chrome():
+class firefox():
 	def __init__(self):
 		
-		self.browser= webdriver.Chrome()
+		location = 'D:/Program Files/Mozilla Firefox/firefox.exe'
+		self.browser= webdriver.Firefox(firefox_binary=location)
 		self.browser.maximize_window()
 		self.browser.set_page_load_timeout(5)
 		self.browser.set_script_timeout(5)

@@ -13,10 +13,10 @@ import random
 
 from selenium.webdriver.common.keys import Keys
 
-class chrome():
+class phantomjs():
 	def __init__(self):
 		
-		self.browser= webdriver.Chrome()
+		self.browser= webdriver.PhantomJS()
 		self.browser.maximize_window()
 		self.browser.set_page_load_timeout(5)
 		self.browser.set_script_timeout(5)
