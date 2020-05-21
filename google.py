@@ -38,9 +38,9 @@ class chrome():
 	def __init__(self):
 		
 		self.browser= webdriver.Chrome()
-		self.browser.maximize_window()
-		self.browser.set_page_load_timeout(5)
-		self.browser.set_script_timeout(5)
+		# self.browser.maximize_window()
+		# self.browser.set_page_load_timeout(5)
+		# self.browser.set_script_timeout(5)
 		self.random = random
 		self.Keys = Keys
 		self.curhandle = None
@@ -125,6 +125,38 @@ class chrome():
 			# raise e
 			# print('表情按钮 没找到')
 			return False
+	def screen(self,screen_file):
+		self.browser.save_screenshot(screen_file)
+	def javascript(self,jsfunction):
+		self.browser.execute_script(jsfunction)
+	def getelementbycss(self,css_selector):
+		# try:
+		# 	res=WebDriverWait(source,0.5).until(lambda source:self.browser.find_element_by_css_selector(css_selector) , " open fail")
+
+		# 	if res==False:
+		# 		return None
+		# 	else:
+		# 		elem=self.browser.find_element_by_css_selector(css_selector)
+		# 		return elem
+		# except Exception, e:
+		# 	return None
+		elem=self.browser.find_element_by_css_selector(css_selector)
+		return elem
+	def getelementsbycss(self,css_selector):
+		# try:
+		# 	res=WebDriverWait(source,0.5).until(lambda source:self.browser.find_elements_by_css_selector(css_selector) , " open fail")
+		# 	if res==False:
+		# 		return []
+		# 	else:
+		# 		elem=self.browser.find_elements_by_css_selector(css_selector)
+		# 		return elem
+		# except Exception, e:
+		# 	return []
+		elem=self.browser.find_elements_by_css_selector(css_selector)
+		if elem:
+			return elem
+		else:
+			return []
 	def sendkey(self,sdkey,cssrule=None):
 		# if cssrule==None:
 		# 	pass
@@ -295,3 +327,15 @@ class chrome():
 		# 关闭误操作打开的窗口
 		self.keep_one_window()
 		return False,None,None
+	def quit(self):
+		# 关闭文件
+		# f.close()
+		# 关闭浏览器 好像退出后,进程还在?需要确认,占用内存
+		try:
+			self.browser.quit()
+		except Exception as e:
+			# raise e
+			pass
+		# self.browser.quit()
+		# 退出python进程
+		exit()
