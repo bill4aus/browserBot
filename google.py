@@ -69,6 +69,54 @@ class chrome():
 			self.msleep(waittime)
 
 		self.curhandle = self.browser.current_window_handle
+
+	def openwithsource(self,openurlstring,refer,waittime=None):
+		
+		# # 带跳转的打开方式
+		try:
+			self.browser.get(refer)
+		except Exception as e:
+			# raise e
+			self.browser.quit()
+		
+		time.sleep(3)
+
+		try:
+			set_wyswyg_js = 'location.href="'+openurlstring+'";'
+			self.javascript(set_wyswyg_js)
+		except Exception as e:
+			# self.browser.quit()
+			pass
+
+		
+		if waittime==None:
+			pass
+			self.msleep(0.3)
+			# time.sleep(random.random())
+		else:
+			print('sleep {} seconds'.format(waittime))
+			self.msleep(waittime)
+			
+		# self.screen("./wechat.png")
+		# time.sleep(3)
+
+		# try:
+		# 	self.check_website()
+		# except Exception as e:
+		# 	# raise e
+		# 	self.browser.quit()
+
+		# while True:
+		# 	print('code check and  recognise .......')
+
+		# 	if self.check_vertifycode()==None:
+		# 		pass
+		# 		print("cotinune")
+		# 		time.sleep(5)
+		# 		self.screen("./wechat.png")
+		# 	else:
+		# 		break;
+
 	def close(self):
 		self.browser.quit()
 	def save_cookie(self,cookiefile):
