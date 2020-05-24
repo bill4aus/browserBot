@@ -96,7 +96,7 @@ class chrome():
 		else:
 			print('sleep {} seconds'.format(waittime))
 			self.msleep(waittime)
-			
+
 		# self.screen("./wechat.png")
 		# time.sleep(3)
 
@@ -174,9 +174,20 @@ class chrome():
 			# print('表情按钮 没找到')
 			return False
 	def screen(self,screen_file):
-		self.browser.save_screenshot(screen_file)
+		try:
+			self.browser.save_screenshot(screen_file)
+		except Exception as e:
+			# raise e
+			pass
 	def javascript(self,jsfunction):
-		self.browser.execute_script(jsfunction)
+		try:
+			pass
+			self.browser.execute_script(jsfunction)
+		except Exception as e:
+			# raise e
+			pass
+			print(str(e))
+		
 	def getelementbycss(self,css_selector):
 		# try:
 		# 	res=WebDriverWait(source,0.5).until(lambda source:self.browser.find_element_by_css_selector(css_selector) , " open fail")
